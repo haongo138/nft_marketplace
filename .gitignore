@@ -41,8 +41,9 @@ typechain
 
 #Hardhat files
 cache
-artifacts
 
 .secret
 .vscode/
 secret.json
+
+.eslintrc.json
