@@ -45,3 +45,4 @@ artifacts
 
 .secret
 .vscode/
+secret.json

@@ -19,7 +19,8 @@ export default function Home() {
 
   async function loadNFTs() {
     /* create a generic provider and query for unsold market items */
-    const url = "https://eth-rinkeby.alchemyapi.io/v2/TAXOk3a-p0XLqLig1_x5T_epbxpjVpzh";
+    // const url = "https://eth-rinkeby.alchemyapi.io/v2/TAXOk3a-p0XLqLig1_x5T_epbxpjVpzh";
+    const url = `https://eth-rinkeby.alchemyapi.io/v2/${process.evn.ALCHEMY_API_KEY}`;
     const provider = new ethers.providers.JsonRpcProvider(url)
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider)
     const marketContract = new ethers.Contract(nftmarketaddress, Market.abi, provider)

@@ -1,8 +1,7 @@
 require("@nomiclabs/hardhat-waffle");
 require('@openzeppelin/hardhat-upgrades');
 const fs = require('fs');
-const {alchemyApiKey, mnemonic} = require("./secret.json");
-const privateKey = fs.readFileSync(".secret").toString().trim() || "01234567890123456789";
+// const {alchemyApiKey, mnemonic} = require("./secret.json");
 
 module.exports = {
   defaultNetwork: "rinkeby",
@@ -10,8 +9,9 @@ module.exports = {
     hardhat: {
     },
     rinkeby: {
-      url: `https://eth-rinkeby.alchemyapi.io/v2/${alchemyApiKey}`,
-      accounts: {mnemonic: mnemonic},
+      // url: `https://eth-rinkeby.alchemyapi.io/v2/${alchemyApiKey}`,
+      url: `https://eth-rinkeby.alchemyapi.io/v2/${process.evn.ALCHEMY_API_KEY}`,
+      accounts: {mnemonic: `${process.evn.MNEMONIC}`,
       chainId: 4,
     }
   },
