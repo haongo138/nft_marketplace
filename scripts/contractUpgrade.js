@@ -18,20 +18,11 @@ const {ethers, upgrades} = require('hardhat');
 
 async function main() {
   
-  // Deploying
-  const NFTMarket = await ethers.getContractFactory("NFTMarket");
-  const instance = await upgrades.deployProxy(NFTMarket);
-  await instance.deployed();
-  console.log("NFTMarket is deployed to:", instance.address);
-
-  const NFT = await ethers.getContractFactory("NFT");
-  const nftInstance = await upgrades.deployProxy(NFT, [instance.address]);
-  await nftInstance.deployed();
-  console.log("NFT contract is deployed to:", nftInstance.address);
-
+  const marketContractAddress = "0xEC5C6FC1282aC5E6FEb73F0740D43F4d2c1a89eD";
+  
   // Upgrading
   const UpgradedNFTMarket = await ethers.getContractFactory("UpgradedNFTMarket");
-  const upgraded = await upgrades.upgradeProxy(instance.address, UpgradedNFTMarket);
+  await upgrades.upgradeProxy(marketContractAddress, UpgradedNFTMarket);
   console.log("NFTMarket upgraded");
 }
 

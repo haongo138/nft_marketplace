@@ -16,12 +16,19 @@ export default function Home() {
   useEffect(() => {
     loadNFTs()
   }, [])
+
   async function loadNFTs() {
     /* create a generic provider and query for unsold market items */
-    const provider = new ethers.providers.JsonRpcProvider()
+    const url = "https://eth-rinkeby.alchemyapi.io/v2/TAXOk3a-p0XLqLig1_x5T_epbxpjVpzh";
+    const provider = new ethers.providers.JsonRpcProvider(url)
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider)
     const marketContract = new ethers.Contract(nftmarketaddress, Market.abi, provider)
     const data = await marketContract.fetchMarketItems()
+
+    console.log("Provider: ", provider);
+    console.log("tokenContract: ", tokenContract);
+    console.log("marketContract: ", marketContract);
+    console.log("data: ", data);
 
     /*
     *  map over items returned from smart contract and format 
@@ -41,10 +48,12 @@ export default function Home() {
         description: meta.data.description,
       }
       return item
-    }))
+    }));
+
     setNfts(items)
     setLoadingState('loaded') 
   }
+
   async function buyNft(nft) {
     /* needs the user to sign the transaction, so will use Web3Provider and sign it */
     const web3Modal = new Web3Modal()

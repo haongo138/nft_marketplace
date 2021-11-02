@@ -1,2 +1,2 @@
-export const nftmarketaddress = "0x89F622751c8a08b95b8A1610a68B1D48592C203F"
-export const nftaddress = "0x537f84aBD84317963B0d1A07bd9787bd08713985"
+export const nftmarketaddress = "0xEC5C6FC1282aC5E6FEb73F0740D43F4d2c1a89eD";
+export const nftaddress = "0xe8dA713b1864cCF73E2A78A5b4EC1997A2b5BD52";
